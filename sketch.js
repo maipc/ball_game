@@ -19,14 +19,15 @@ function draw() {
   player.update();
   player.show();
 
-  ball.show();
   ball.update();
+  ball.show();
 
   ai.update();
   ai.show();
 
-  ball.scores();
+  ball.check();
 
+  reset();
   drawScores();
 }
 
@@ -38,4 +39,19 @@ function drawScores() {
   textSize(Size);
   text(playerScore, x1, y);
   text(AIScore, x2, y);
+}
+
+function reset() {
+  if(ball.pos.x-ball.r < 0) {
+    fill('white');
+    textSize(Size);
+    textAlign(CENTER);
+    text('Computer win !', width/2, height/5);
+  }
+  else if(ball.pos.x+ball.r > width) {
+    fill('white');
+    textSize(Size);
+    textAlign(CENTER);
+    text('Player win !', width/2, height/5);
+  }
 }
