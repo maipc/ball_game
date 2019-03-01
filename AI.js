@@ -3,7 +3,7 @@ function AI() {
     this.h = player.h;
 
     this.pos = createVector(width-this.w*2, height/2-this.h/2);
-    this.acc = createVector(0, 0);
+    this.spd = createVector(0, 0);
 
     this.show = function() {
         noStroke();
@@ -12,11 +12,11 @@ function AI() {
     }
     
     this.update = function() {
-        this.acc.y = -((this.pos.y+(this.h/2)) - ball.pos.y);
-        if(this.acc.y < -4) this.acc.y = -5;
-        else if(this.acc.y > 4) this.acc.y = 5;
+        this.spd.y = -((this.pos.y+(this.h/2)) - ball.pos.y);
+        if(this.spd.y < -4) this.spd.y = -7;
+        else if(this.spd.y > 4) this.spd.y = 7;
 
-        this.pos.add(this.acc);
+        this.pos.add(this.spd);
         this.pos.y = constrain(this.pos.y, 0, height-this.h);
     }
 }
